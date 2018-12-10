@@ -1,0 +1,46 @@
+.switch {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border: 2px solid #0e93dd;
+    border-radius: 4px;
+}
+
+.switch__input {
+    display: none;
+}
+
+.switch__label {
+    display: flex;
+}
+
+.switch__label:before,
+.switch__label:after {
+    display: block;
+    width: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background .5s, color .5s;
+}
+
+.switch__label:before {
+    content: 'IN';
+    background: #0e93dd;
+    color: white;
+}
+
+.switch__label:after {
+    content: 'CM';
+    background: transparent;
+    color: #0e93dd;
+}
+
+.switch__input:checked ~ .switch__label:after {
+    background: #0e93dd;
+    color: white;
+}
+
+.switch__input:checked ~ .switch__label:before {
+    background: transparent;
+    color: #0e93dd;
+}
