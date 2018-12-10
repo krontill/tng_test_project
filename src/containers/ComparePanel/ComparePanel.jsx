@@ -27,6 +27,7 @@ export class ComparePanel extends Component {
                 item={item}
                 calculations={calculations(width, height)}
                 bodySize={{width, height}}
+                metric={this.props.metric}
             />);
     }
 
@@ -50,7 +51,8 @@ let mapStateToProps = (state) => {
     return {
         currentMode: state.ControlPanel.currentMode,
         currentItems: state.ControlPanel.currentItems,
-        product: state.ComparePanel.product
+        product: state.ComparePanel.product,
+        metric: state.SwitchMetric.metric
     };
 };
 
