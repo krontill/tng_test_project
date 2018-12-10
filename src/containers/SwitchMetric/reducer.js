@@ -1,7 +1,7 @@
 import {SWITCH_METRIC} from '../../constants/actions';
 
 const initialState = {
-    metric: 'IN'
+    metric: localStorage.getItem('metric') || 'IN'
 };
 
 export default function handle(state = initialState, action) {
