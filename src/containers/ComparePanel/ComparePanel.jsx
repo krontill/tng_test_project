@@ -9,17 +9,35 @@ import SwitchMetric from '../SwitchMetric/SwitchMetric';
 export class ComparePanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {domReady: false};
+        this.state = {
+            domReady: false,
+            width: 0,
+            height: 0
+        };
     }
 
     componentDidMount() {
-        this.setState({domReady: true});
+        this.setState({
+            domReady: true,
+            width: this.comparePanelBody.offsetWidth,
+            height: this.comparePanelBody.offsetHeight
+        });
+        window.addEventListener('resize', this.resizeHandler);
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resizeHandler);
+    }
+
+    resizeHandler = () => {
+        this.setState({
+            width: this.comparePanelBody.offsetWidth,
+            height: this.comparePanelBody.offsetHeight
+        });
+    };
+
     showCurrentMode(mode, product, item) {
-        const
-            width = this.comparePanelBody.offsetWidth,
-            height = this.comparePanelBody.offsetHeight;
+        const {width, height} = this.state;
         return (
             <CompareWithItem
                 key={item.id}
